@@ -84,8 +84,8 @@ export const products: Product[] = [
     image: {
       src: "/products/boopaw/cover.png",
       alt: "BooPaw mobile application icon and branding",
-      width: 1024,
-      height: 1024,
+      width: 1000,
+      height: 1000,
     },
     features: [
       {
