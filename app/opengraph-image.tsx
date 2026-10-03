@@ -4,6 +4,7 @@ import { site } from "@/data/site";
 export const alt = `${site.name} — ${site.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+export const dynamic = "force-static";
 
 export default function OpengraphImage() {
   const label = { fontSize: 20, letterSpacing: 2, color: "#a29d93", textTransform: "uppercase" as const };
