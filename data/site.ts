@@ -14,16 +14,14 @@ export const site = {
 
   /**
    * Production URL — used for canonical links, the sitemap and Open Graph.
-   * Set NEXT_PUBLIC_SITE_URL in your hosting environment (e.g. https://devskitchen.com).
-   * The .example fallback is a deliberate placeholder.
+   * Set NEXT_PUBLIC_SITE_URL in your hosting environment (e.g. https://devskitchen.dev.cv).
    */
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://devskitchen.example").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://devskitchen.dev.cv").replace(/\/$/, ""),
 
   /**
-   * Public contact address. REPLACE before launch.
-   * The .example TLD is reserved and will never deliver mail — it is a placeholder on purpose.
+   * Public contact address.
    */
-  email: "hello@devskitchen.example",
+  email: "hello@devskitchen.dev.cv",
 
   location: {
     country: "Bangladesh",
