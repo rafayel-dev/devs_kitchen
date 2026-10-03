@@ -70,42 +70,68 @@ export const platformLabel: Record<Platform, string> = {
 
 export const products: Product[] = [
   {
-    slug: "untitled-01",
-    name: "Untitled No. 01",
+    slug: "boopaw",
+    name: "BooPaw",
     category: "Mobile application",
-    status: "coming-soon",
-    summary: "A focused mobile app for an everyday task. Name and details at launch.",
+    status: "in-development",
+    summary: "Digital Pet ID, smart QR collar tags and lost & found pet network.",
     description: [
-      "Our first mobile application is in development for Android. We will publish its name, screenshots and full details here when it is ready to ship.",
-      "This page will then link straight to Google Play, along with support and privacy information for the app.",
+      "BooPaw gives pet owners a digital identity for their pets with unique, secure QR collar tags. If a pet ever goes missing, anyone who finds it can scan the tag with their phone camera to instantly view emergency information and contact the owner safely.",
+      "The companion mobile application provides owners with instant scan notifications, lost pet community alerts, digital health documents, photo diary, and walk tracking for dogs and cats.",
+      "Currently in active development for Android and iOS, built with React Native and modern web technologies.",
     ],
-    platforms: ["android"],
-    placeholder: true,
+    platforms: ["android", "ios"],
+    image: {
+      src: "/products/boopaw/cover.png",
+      alt: "BooPaw mobile application icon and branding",
+      width: 1024,
+      height: 1024,
+    },
+    features: [
+      {
+        title: "Smart QR Collar Tags",
+        body: "Instant identification scannable by any standard phone camera without requiring an app installation.",
+      },
+      {
+        title: "Lost & Found Community Network",
+        body: "Real-time scan alerts with approximate location and neighborhood pet broadcast system.",
+      },
+      {
+        title: "Digital Pet Passport",
+        body: "Securely store vaccination records, dietary needs, medical history, and emergency vet contacts.",
+      },
+      {
+        title: "Health & Activity Diary",
+        body: "Track daily walks, photo diary memories, and pet wellness milestones in one place.",
+      },
+    ],
+    technology: ["React Native", "Expo", "TypeScript", "Node.js", "MongoDB"],
+    websiteUrl: "https://boopaw.app",
+    supportUrl: "mailto:hello@devskitchen.dev.cv?subject=BooPaw%20Support",
+    privacyUrl: "/privacy",
   },
   {
-    slug: "untitled-02",
-    name: "Untitled No. 02",
+    slug: "kitchen-tools",
+    name: "Studio Tools",
     category: "Digital tool",
     status: "in-development",
-    summary: "A small, sharp utility built around one specific job.",
+    summary: "Focused developer utilities and browser tools built for everyday workflows.",
     description: [
-      "A browser-based tool that does one thing well. It is being built and tested now; details will follow once it is ready for public use.",
+      "A collection of purposeful web tools crafted to solve specific workflow friction points. Designed to be fast, private, and lightweight without bloat.",
     ],
     platforms: ["web"],
-    placeholder: true,
+    technology: ["TypeScript", "Next.js", "Web APIs"],
   },
   {
-    slug: "something-new",
-    name: "Something new",
+    slug: "studio-lab",
+    name: "Studio Lab",
     category: "Experiment",
     status: "experiment",
-    summary: "Ideas we are testing before they earn the right to become products.",
+    summary: "Experimental prototypes and software concepts currently in exploration.",
     description: [
-      "Not everything we try becomes a product. Experiments are where we test an idea quickly and decide whether it is worth building properly.",
-      "When one graduates, it gets its own page here.",
+      "Our sandbox for exploring new interactions, mobile experiments, and emerging technologies before they graduate into full products.",
     ],
-    platforms: [],
-    placeholder: true,
+    platforms: ["web", "android"],
   },
 ];
 
