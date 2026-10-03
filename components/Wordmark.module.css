@@ -1,0 +1,23 @@
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.32em;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.pilot {
+  width: 0.36em;
+  height: 0.36em;
+  margin-left: 0.04em;
+  background: var(--accent);
+  align-self: center;
+  translate: 0 0.12em;
+}
+
+:global(.on-ink) .pilot {
+  background: var(--accent-on-ink);
+}

@@ -1,0 +1,39 @@
+.wrap {
+  display: grid;
+  justify-items: start;
+  gap: 1.75rem;
+  padding-block: clamp(1.5rem, 3vw, 2.5rem) clamp(6rem, 12vw, 11rem);
+}
+
+.rail {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.rail > span:first-child {
+  color: var(--accent);
+}
+
+.title {
+  margin-top: clamp(2rem, 6vw, 5rem);
+  font-size: var(--fs-h1);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 0.92;
+  max-width: 11ch;
+}
+
+.title :global(.serif) {
+  font-weight: 400;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+  margin-top: 1rem;
+}

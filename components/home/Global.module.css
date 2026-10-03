@@ -1,0 +1,136 @@
+.section {
+  padding-top: 0;
+}
+
+.head {
+  display: grid;
+  gap: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line-strong);
+}
+
+.index {
+  color: var(--accent);
+}
+
+.title {
+  font-size: var(--fs-h2);
+}
+
+.title :global(.serif) {
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 900px) {
+  .head {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 2rem;
+  }
+  .head > p {
+    grid-column: 1 / span 4;
+  }
+  .title {
+    grid-column: 5 / -1;
+  }
+}
+
+/* ---- Ruler ------------------------------------------------------------ */
+
+.ruler {
+  margin-top: clamp(3.5rem, 8vw, 7rem);
+}
+
+.ticks {
+  display: grid;
+  grid-template-columns: repeat(27, 1fr);
+  align-items: end;
+  height: 5.5rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+.tick {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.mark {
+  width: 1px;
+  height: 0.6rem;
+  background: var(--line-strong);
+}
+
+.tick[data-minor] .mark {
+  height: 1.1rem;
+  background: var(--ink);
+}
+
+.tick[data-major] .mark {
+  height: 1.75rem;
+}
+
+.tickLabel {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  color: var(--muted);
+  font-size: 0.625rem;
+  white-space: nowrap;
+  display: none;
+}
+
+.tick[data-major] .tickLabel {
+  display: block;
+}
+
+.tick[data-home] .mark {
+  width: 2px;
+  height: 100%;
+  background: var(--accent);
+}
+
+.tick[data-home] .tickLabel {
+  color: var(--accent);
+}
+
+@media (min-width: 768px) {
+  .tick[data-minor] .tickLabel {
+    display: block;
+  }
+  .tickLabel {
+    font-size: var(--fs-label);
+  }
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-top: 3rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 0.6rem;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: 0.05em;
+}
+
+.copy {
+  max-width: 36rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+@media (min-width: 900px) {
+  .copy {
+    margin-left: calc((100% - 11 * 2rem) / 12 * 4 + 4 * 2rem);
+  }
+}

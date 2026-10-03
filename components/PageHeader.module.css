@@ -1,0 +1,47 @@
+.header {
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  padding-bottom: clamp(3.5rem, 8vw, 7rem);
+}
+
+.rail {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.title {
+  margin-top: clamp(2.5rem, 7vw, 5.5rem);
+  font-size: var(--fs-h1);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 0.92;
+  max-width: 12ch;
+  animation: rise 0.9s var(--ease-out) both;
+}
+
+.title :global(.serif) {
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+.intro {
+  max-width: 34rem;
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  color: var(--muted);
+  animation: rise 0.9s var(--ease-out) 0.12s both;
+}
+
+@media (min-width: 900px) {
+  .intro {
+    margin-left: calc((100% - 11 * 2rem) / 12 * 4 + 4 * 2rem);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+}

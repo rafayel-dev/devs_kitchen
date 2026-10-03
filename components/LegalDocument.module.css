@@ -1,0 +1,85 @@
+.layout {
+  display: grid;
+  gap: 3rem;
+  padding-bottom: clamp(5rem, 10vw, 9rem);
+}
+
+.toc {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-strong);
+}
+
+.toc a {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.5rem;
+  padding-block: 0.4rem;
+  font-size: var(--fs-small);
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.toc a > span {
+  padding-top: 0.25em;
+}
+
+@media (hover: hover) {
+  .toc a:hover {
+    color: var(--ink);
+  }
+}
+
+.body {
+  max-width: 44rem;
+}
+
+.section {
+  display: grid;
+  gap: 1rem;
+  padding-block: 1.25rem 2.75rem;
+  border-top: 1px solid var(--line-strong);
+}
+
+.heading {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.section p,
+.section ul {
+  color: var(--ink-3);
+}
+
+.section ul {
+  display: grid;
+  gap: 0.5rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.section li::marker {
+  color: var(--accent);
+}
+
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 2rem;
+  }
+  .toc {
+    grid-column: 1 / span 3;
+    position: sticky;
+    top: calc(var(--header-h) + 1.5rem);
+    align-self: start;
+  }
+  .body {
+    grid-column: 5 / span 7;
+  }
+}

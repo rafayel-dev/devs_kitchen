@@ -1,0 +1,25 @@
+.grid {
+  display: grid;
+  gap: 3.5rem;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+  }
+  /* A quiet stagger, so the row reads as a sequence rather than a template grid. */
+  .grid > li:nth-child(3n + 2) {
+    margin-top: clamp(3rem, 6vw, 6rem);
+  }
+  .grid > li:nth-child(3n + 3) {
+    margin-top: clamp(1.5rem, 3vw, 3rem);
+  }
+}

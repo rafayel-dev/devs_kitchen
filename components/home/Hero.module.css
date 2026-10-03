@@ -1,0 +1,215 @@
+.hero {
+  position: relative;
+  padding-block: clamp(1.5rem, 3vw, 2.5rem) clamp(4.5rem, 9vw, 8rem);
+}
+
+/* Faint column guides — the grid the whole site is set on. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  background-clip: content-box;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--line) 0 1px,
+    transparent 1px calc((100% + 0px) / 4)
+  );
+  opacity: 0.45;
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 85%);
+}
+
+@media (min-width: 900px) {
+  .hero::before {
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--line) 0 1px,
+      transparent 1px calc(100% / 12)
+    );
+  }
+}
+
+.inner {
+  position: relative;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 2rem;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.route span[aria-hidden] {
+  color: var(--accent);
+}
+
+.clock {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Title ------------------------------------------------------------ */
+
+.title {
+  font-size: var(--fs-display);
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  text-wrap: nowrap;
+}
+
+.mask {
+  display: block;
+  overflow: hidden;
+  /* room for descender-less caps + optical overshoot */
+  padding-block: 0.02em 0.04em;
+  margin-left: -0.055em;
+}
+
+.line {
+  display: block;
+  animation: rise 1.1s var(--ease-out) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(102%);
+  }
+}
+
+.tagline {
+  margin-top: clamp(1.25rem, 2.5vw, 2rem);
+  font-size: clamp(1.75rem, 4.2vw, 3.5rem);
+  line-height: 1.05;
+  animation: fade 1s var(--ease-out) 0.35s both;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+.titleWrap {
+  position: relative;
+  margin-top: clamp(2.5rem, 7vw, 5.5rem);
+}
+
+@media (min-width: 900px) {
+  /* Tagline sits in the empty space to the right of "DEVS", on its baseline. */
+  .tagline {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 42%;
+    height: calc(var(--fs-display) * 0.78);
+    margin: 0;
+    text-align: right;
+    font-size: clamp(2rem, 3.4vw, 3.75rem);
+  }
+}
+
+/* ---- Lower band ------------------------------------------------------- */
+
+.lower {
+  display: grid;
+  gap: 3.5rem;
+  margin-top: clamp(2.5rem, 6vw, 5rem);
+  animation: fade 1s var(--ease-out) 0.5s both;
+}
+
+.copy .lead {
+  max-width: 30rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+  margin-top: 2rem;
+}
+
+.ticket {
+  align-self: end;
+  border-top: 1px solid var(--ink);
+}
+
+.ticketHead {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 0.75rem;
+  border-bottom: 1px dashed var(--line-strong);
+}
+
+.ticketRow {
+  display: grid;
+  grid-template-columns: 2rem 1fr auto;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding-block: 0.8rem;
+  border-bottom: 1px solid var(--line);
+  transition: padding 0.35s var(--ease-out);
+}
+
+.ticketName {
+  font-weight: 500;
+  font-size: var(--fs-small);
+}
+
+.ticketStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+}
+
+.ticketStatus::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+}
+
+.ticketStatus[data-status="live"]::before,
+.ticketStatus[data-status="beta"]::before,
+.ticketStatus[data-status="in-development"]::before {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (hover: hover) {
+  .ticketRow:hover {
+    padding-left: 0.5rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .lower {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 2rem;
+  }
+  .copy {
+    grid-column: 1 / span 6;
+  }
+  .ticket {
+    grid-column: 8 / -1;
+  }
+}
+
+@media (min-width: 1280px) {
+  .ticket {
+    grid-column: 9 / -1;
+  }
+}

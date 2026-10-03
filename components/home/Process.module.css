@@ -1,0 +1,100 @@
+.process {
+  overflow: hidden;
+}
+
+.aside {
+  display: block;
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  line-height: 1.15;
+  color: var(--paper);
+}
+
+/* ---- Progress line ---------------------------------------------------- */
+
+.track {
+  position: relative;
+  height: 1px;
+  margin-top: clamp(4rem, 8vw, 7rem);
+  background: var(--line-on-ink);
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  background: var(--accent-on-ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 2.4s var(--ease-in-out) 0.2s;
+}
+
+.track[data-visible] .fill {
+  transform: scaleX(1);
+}
+
+@media (scripting: none), (prefers-reduced-motion: reduce) {
+  .fill {
+    transform: scaleX(1);
+  }
+}
+
+/* ---- Steps ------------------------------------------------------------ */
+
+.steps {
+  display: grid;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 0.25rem 1rem;
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--line-on-ink);
+}
+
+.num {
+  padding-top: 0.6em;
+  color: var(--accent-on-ink);
+}
+
+.name {
+  font-size: clamp(2.25rem, 9vw, 3rem);
+  font-weight: var(--w, 500);
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.body {
+  grid-column: 2;
+  max-width: 24rem;
+  font-size: var(--fs-small);
+}
+
+@media (min-width: 640px) {
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1.5rem;
+  }
+  .step {
+    grid-template-columns: 1fr;
+    align-content: start;
+    gap: 1rem;
+    padding-block: 1.5rem 2.5rem;
+    border-bottom: 0;
+  }
+  .body {
+    grid-column: 1;
+  }
+  .name {
+    font-size: clamp(2rem, 4.4vw, 3rem);
+  }
+}
+
+@media (min-width: 1100px) {
+  .steps {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 2rem;
+  }
+  .name {
+    font-size: clamp(2rem, 2.9vw, 3.5rem);
+  }
+}

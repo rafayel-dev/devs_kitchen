@@ -1,0 +1,68 @@
+.plate {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--paper-2);
+  color: var(--ink);
+}
+
+.image,
+.sketch {
+  width: 100%;
+  height: 100%;
+  transition: transform 1.1s var(--ease-out);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.sketch {
+  display: grid;
+  place-items: center;
+  padding: 8%;
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.85;
+}
+
+.accentFill {
+  fill: var(--accent);
+  stroke: none;
+}
+
+.accentStroke {
+  stroke: var(--accent);
+}
+
+.kbd {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  fill: currentColor;
+}
+
+.caption {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0.9rem;
+  color: var(--muted);
+}
+
+/* Hover zoom is driven by the parent card (a:hover) */
+:global(a:hover) .image,
+:global(a:hover) .sketch {
+  transform: scale(1.035);
+}
+
+@media (hover: none) {
+  :global(a:hover) .image,
+  :global(a:hover) .sketch {
+    transform: none;
+  }
+}

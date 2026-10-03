@@ -1,0 +1,140 @@
+/* ---- Shared ----------------------------------------------------------- */
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.25rem;
+}
+
+.index {
+  color: var(--accent);
+}
+
+.summary {
+  max-width: 34rem;
+}
+
+/* ---- Card (home) ------------------------------------------------------ */
+
+.cardLink {
+  display: grid;
+  gap: 0;
+}
+
+.cardLink .meta {
+  justify-content: space-between;
+  margin-top: 1.25rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+.name {
+  margin-top: 1.25rem;
+  font-size: clamp(1.625rem, 2.6vw, 2.25rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.category {
+  margin-top: 0.5rem;
+}
+
+.cardLink .summary {
+  margin-top: 1rem;
+  font-size: var(--fs-small);
+}
+
+.view {
+  display: inline-flex;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
+.view span {
+  transition: transform 0.4s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .cardLink:hover .view span {
+    transform: translateX(4px);
+  }
+  .cardLink:hover .name {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+  }
+}
+
+/* ---- Row (products page) ---------------------------------------------- */
+
+.row {
+  display: grid;
+  gap: 1.75rem;
+  padding-block: clamp(2rem, 4vw, 3.5rem);
+  border-top: 1px solid var(--line-strong);
+}
+
+.rowPlate {
+  display: block;
+}
+
+.rowBody {
+  display: grid;
+  align-content: start;
+  gap: 1.25rem;
+}
+
+.rowName {
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+
+@media (hover: hover) {
+  .rowName a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.12em;
+  }
+}
+
+.facts {
+  display: flex;
+  gap: 2rem;
+  padding-block: 1rem;
+  border-block: 1px solid var(--line);
+}
+
+.facts dd {
+  margin-top: 0.25rem;
+  font-size: var(--fs-small);
+}
+
+.rowActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+  margin-top: 0.5rem;
+}
+
+.more {
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
+@media (min-width: 900px) {
+  .row {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 2rem;
+  }
+  .rowPlate {
+    grid-column: 1 / span 6;
+  }
+  .rowBody {
+    grid-column: 8 / -1;
+  }
+}

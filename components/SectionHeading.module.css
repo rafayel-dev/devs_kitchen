@@ -1,0 +1,46 @@
+.head {
+  display: grid;
+  gap: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line-strong);
+}
+
+:global(.on-ink) .head {
+  border-top-color: var(--line-on-ink);
+}
+
+.meta {
+  display: flex;
+  gap: 0.9rem;
+}
+
+.index {
+  color: var(--accent);
+}
+
+:global(.on-ink) .index {
+  color: var(--accent-on-ink);
+}
+
+.title {
+  font-size: var(--fs-h2);
+  max-width: 14ch;
+}
+
+.intro {
+  margin-top: 1.5rem;
+  max-width: 34rem;
+}
+
+@media (min-width: 900px) {
+  .head {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 2rem;
+  }
+  .meta {
+    grid-column: 1 / span 4;
+  }
+  .body {
+    grid-column: 5 / -1;
+  }
+}
