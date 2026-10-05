@@ -1,0 +1,213 @@
+.form {
+  display: grid;
+  gap: 2.25rem;
+}
+
+.row {
+  display: grid;
+  gap: 2.25rem;
+}
+
+@media (min-width: 640px) {
+  .row {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5rem;
+  }
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.optional {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.input {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.5rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.125rem;
+  transition: border-color 0.25s ease;
+}
+
+.input:hover {
+  border-bottom-color: var(--ink);
+}
+
+.input:focus-visible {
+  outline: none;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: calc(0.5rem - 1px);
+}
+
+.input::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+select.input {
+  appearance: none;
+  cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    calc(100% - 10px) 55%,
+    calc(100% - 5px) 55%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.textarea {
+  min-height: 8rem;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+/* ---- Chips ------------------------------------------------------------ */
+
+.fieldset {
+  display: grid;
+  gap: 0.85rem;
+  border: 0;
+  min-width: 0;
+}
+
+.fieldset legend {
+  margin-bottom: 0.85rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  position: relative;
+  cursor: pointer;
+}
+
+.chip input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.chip span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-inline: 1.1rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: var(--fs-small);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.chip:hover span {
+  border-color: var(--ink);
+}
+
+.chip input:checked + span {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+.chip input:focus-visible + span {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---- Submit ----------------------------------------------------------- */
+
+.submitRow {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+}
+
+.submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.25rem;
+  min-height: 3.5rem;
+  padding-inline: 1.75rem 1.5rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.submit span {
+  transition: transform 0.4s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .submit:hover:not(:disabled) {
+    background: var(--accent);
+  }
+  .submit:hover:not(:disabled) span {
+    transform: translateX(4px);
+  }
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.note {
+  font-size: var(--fs-small);
+}
+
+.status:empty {
+  display: none;
+}
+
+.status {
+  padding: 1rem 1.25rem;
+  border-left: 2px solid var(--accent);
+  background: var(--paper-2);
+  font-size: var(--fs-small);
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+}
+
+/* ---- Done ------------------------------------------------------------- */
+
+.done {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  background: var(--paper-2);
+}
+
+.done > .label {
+  color: var(--accent);
+}
+
+.doneTitle {
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}

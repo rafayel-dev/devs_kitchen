@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { RevealObserver } from "@/components/RevealObserver";
 import { JsonLd } from "@/components/JsonLd";
+import { services } from "@/data/services";
 import { site } from "@/data/site";
 import "./globals.css";
 
@@ -31,7 +32,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Independent software studio`,
+    default: `${site.name} — Design & development studio`,
     template: `%s — ${site.name}`,
   },
   description: site.description,
@@ -65,6 +66,7 @@ const organization = {
   url: site.url,
   description: site.description,
   slogan: site.tagline,
+  knowsAbout: services.map((s) => s.title),
   email: site.email,
   logo: `${site.url}/icon.svg`,
   address: { "@type": "PostalAddress", addressCountry: site.location.countryCode },

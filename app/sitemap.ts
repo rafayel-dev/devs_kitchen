@@ -1,14 +1,15 @@
 import type { MetadataRoute } from "next";
 import { products } from "@/data/products";
+import { work } from "@/data/work";
 import { site } from "@/data/site";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["", "/products", "/about", "/contact", "/privacy", "/terms"].map((path) => ({
+  const pages = ["", "/services", "/work", "/products", "/about", "/contact", "/privacy", "/terms"].map((path) => ({
     url: `${site.url}${path}`,
     changeFrequency: "monthly" as const,
-    priority: path === "" ? 1 : path === "/products" ? 0.9 : 0.6,
+    priority: path === "" ? 1 : ["/services", "/work", "/contact"].includes(path) ? 0.9 : 0.6,
   }));
 
   // Placeholder products are noindex, so they stay out of the sitemap too.
@@ -20,5 +21,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     }));
 
-  return [...pages, ...productPages];
+  const caseStudies = work.map((w) => ({
+    url: `${site.url}/work/${w.slug}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  return [...pages, ...caseStudies, ...productPages];
 }

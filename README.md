@@ -13,20 +13,28 @@ npm run build && npm start
 
 ## Before launch
 
-1. **Contact email**: set `email` in `data/site.ts`. It currently uses the reserved `.example` domain on purpose.
-2. **Site URL**: set `NEXT_PUBLIC_SITE_URL` (e.g. `https://devskitchen.com`) in your hosting environment. Canonical links, the sitemap, robots.txt and Open Graph all use it.
-3. **Products**: replace the placeholder entries in `data/products.ts` (see below).
-4. **Legal**: review `data/legal.ts`. It describes the site as built: no cookies, analytics, forms or accounts. If you add any of those, update the policy, and have the final text reviewed professionally.
-5. **Social links**: add real profiles to `site.social`. An empty list hides them.
+1. **Project form**: create a free access key at [web3forms.com](https://web3forms.com) and set `NEXT_PUBLIC_WEB3FORMS_KEY` in your hosting environment. Without it, the form still works by opening the visitor's email app with the brief filled in.
+2. **Booking link** (optional): put a Calendly or similar URL in `site.bookingUrl`. A "Book a call" button then appears on /contact.
+3. **Team** (optional): add real people to `data/team.ts`. The team section on /about stays hidden while the list is empty.
+4. **App privacy policies**: every app needs its own policy before release. Set `privacyUrl` on the product. Until then its page says the policy will be published before launch.
+5. **Legal**: review `data/legal.ts`. Have the final text reviewed professionally.
+6. **Social links**: add real profiles to `site.social`. An empty list hides them.
 
 ## Editing content
 
 | What | Where |
 | --- | --- |
-| Name, tagline, email, location, nav, social | `data/site.ts` |
-| Products | `data/products.ts` |
+| Name, tagline, email, nav, CTA, form key, booking link | `data/site.ts` |
+| Services, engagement models, client process | `data/services.ts` |
+| Case studies (/work) | `data/work.ts` |
+| Own products (/products) | `data/products.ts` |
+| Team | `data/team.ts` |
 | Principles ("How we build") | `data/principles.ts` |
 | Privacy policy & terms | `data/legal.ts` |
+
+### Adding a case study
+
+Append to `work` in `data/work.ts`. Only publish real projects, and only with the client's permission. Set `inHouse: true` for the studio's own products, so they are clearly labelled and never mistaken for client work.
 
 ### Adding a product
 
@@ -41,7 +49,9 @@ Append an object to `products` in `data/products.ts`. The home page, `/products`
   summary: "One line for cards.",
   description: ["Paragraph one.", "Paragraph two."],
   platforms: ["android"],
-  image: { src: "/products/my-app/cover.png", alt: "…", width: 1600, height: 1000 },
+  image: { src: "/products/my-app/cover.webp", alt: "…", width: 1600, height: 1000 },
+  // For logos or wide banners that must not be cropped:
+  // image: { …, fit: "contain", background: "#hex or CSS gradient matching the image edges" },
   screenshots: [ /* same shape as image */ ],
   features: [{ title: "…", body: "…" }],
   technology: ["React Native", "TypeScript"],
@@ -59,10 +69,12 @@ Append an object to `products` in `data/products.ts`. The home page, `/products`
 ## Structure
 
 ```
-app/          routes, metadata, sitemap, robots, manifest, icons, OG image
+app/          routes (/, /services, /work, /products, /about, /contact, legal), metadata, sitemap, icons
 components/   Navbar, Footer, Button, SectionHeading, PageHeader, CTA, …
   home/       homepage sections
   products/   ProductCard, ProductGrid, ProductPlate, StatusBadge, StoreLinks
+  work/       WorkCard
+  contact/    InquiryForm
 data/         all editable content
 ```
 

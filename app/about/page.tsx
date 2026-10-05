@@ -1,40 +1,36 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { CTA } from "@/components/CTA";
 import { LocalTime } from "@/components/LocalTime";
 import { PageHeader } from "@/components/PageHeader";
 import { PageTransition } from "@/components/PageTransition";
 import { principles } from "@/data/principles";
+import { services } from "@/data/services";
 import { site } from "@/data/site";
+import { team } from "@/data/team";
 import styles from "./about.module.css";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "DEVS KITCHEN is an independent software studio from Bangladesh that designs, builds and ships its own digital products.",
+    "DEVS KITCHEN is a software studio from Bangladesh. We design and build apps and web products for clients, and ship products of our own.",
   alternates: { canonical: "/about" },
   openGraph: { url: "/about" },
 };
 
-const making = [
-  { title: "Mobile applications", body: "Apps for everyday tasks, published on Google Play and other stores." },
-  { title: "Web products", body: "Focused products that run in the browser and load quickly anywhere." },
-  { title: "Digital tools", body: "Small utilities that do one job properly." },
-  { title: "Experiments", body: "Quick tests of ideas, some of which grow into products." },
-];
-
 const working = [
   {
-    title: "Small scope, finished well.",
-    body: "We would rather ship one complete thing than three half-done ones. Each release has a clear purpose and an honest scope.",
+    title: "One team, start to finish.",
+    body: "The people who design your product also build it. Nothing is lost in a hand-off, and you always talk to someone who knows the work.",
   },
   {
-    title: "Design and engineering together.",
-    body: "The people who shape the experience also write the software, so decisions about how something looks and how it works are made at the same table.",
+    title: "You see progress every week.",
+    body: "Work happens in short cycles with a working demo each week, so decisions are made early and nothing arrives as a surprise.",
   },
   {
     title: "Still here after launch.",
-    body: "Shipping is the start. We fix problems, answer support email and keep improving what is already out there.",
+    body: "Shipping is the start. We fix problems, keep dependencies and store requirements up to date, and keep improving what is out there.",
   },
 ];
 
@@ -63,27 +59,32 @@ function Block({
 }
 
 export default function AboutPage() {
+  // Section numbers stay continuous whether or not the team section is shown.
+  let n = 0;
+  const next = () => String(++n).padStart(2, "0");
+
   return (
     <PageTransition>
       <PageHeader
         label="About"
-        aside="Independent software studio"
+        aside="Design & development studio"
         title={
           <>
             Software that <span className="serif">earns its place.</span>
           </>
         }
-        intro="DEVS KITCHEN designs, builds and ships its own digital products — from the first idea to the update after launch."
+        intro="DEVS KITCHEN is a software studio from Bangladesh. We design and build apps and web products for clients — and ship products of our own."
       />
 
-      <Block index="01" label="Who we are" id="who">
+      <Block index={next()} label="Who we are" id="who">
         <p className={styles.statement}>
-          An independent software studio from {site.location.country}. We make our own products,
-          end to end: the idea, the design, the code, the release, and everything that comes after.
+          A design and development studio with two sides: client projects, and products we build
+          for ourselves. Each one makes the other better.
         </p>
         <p className="muted">
-          Independent means we choose what to build and decide when it is ready. It also means we
-          answer directly to the people who use what we make.
+          Building our own products keeps us honest about what it takes to launch and maintain
+          software. That experience goes straight into the work we do for clients — from the first
+          scope to the store listing.
         </p>
         <blockquote className={styles.quote}>
           <p className="serif">
@@ -93,21 +94,28 @@ export default function AboutPage() {
         </blockquote>
       </Block>
 
-      <Block index="02" label="What we build" id="what">
+      <Block index={next()} label="What we do" id="what">
         <ul className={styles.making}>
-          {making.map((m) => (
-            <li key={m.title}>
-              <h3 className="h3">{m.title}</h3>
-              <p className="muted">{m.body}</p>
+          {services.map((s) => (
+            <li key={s.slug}>
+              <h3 className="h3">
+                <Link href={`/services#${s.slug}`}>{s.title}</Link>
+              </h3>
+              <p className="muted">{s.summary}</p>
             </li>
           ))}
         </ul>
-        <Link href="/products" className={`link ${styles.inline}`}>
-          See what&rsquo;s cooking <span aria-hidden="true">→</span>
-        </Link>
+        <div className={styles.inlineLinks}>
+          <Link href="/services" className="link">
+            All services <span aria-hidden="true">→</span>
+          </Link>
+          <Link href="/work" className="link">
+            Selected work <span aria-hidden="true">→</span>
+          </Link>
+        </div>
       </Block>
 
-      <Block index="03" label="How we think" id="think">
+      <Block index={next()} label="How we think" id="think">
         <ol className={styles.principles}>
           {principles.map((p, i) => (
             <li key={p.title}>
@@ -121,7 +129,7 @@ export default function AboutPage() {
         </ol>
       </Block>
 
-      <Block index="04" label="How we work" id="work">
+      <Block index={next()} label="How we work" id="work">
         <div className={styles.working}>
           {working.map((w) => (
             <div key={w.title}>
@@ -132,11 +140,42 @@ export default function AboutPage() {
         </div>
       </Block>
 
-      <Block index="05" label="Where we are" id="where">
+      {team.length > 0 && (
+        <Block index={next()} label="The team" id="team">
+          <ul className={styles.team}>
+            {team.map((m) => {
+              const card = (
+                <>
+                  <div className={styles.photo}>
+                    {m.photo && (
+                      <Image src={m.photo} alt={`Portrait of ${m.name}`} width={800} height={800} sizes="(min-width: 900px) 20vw, 45vw" />
+                    )}
+                  </div>
+                  <p className={styles.memberName}>{m.name}</p>
+                  <p className="label muted">{m.role}</p>
+                </>
+              );
+              return (
+                <li key={m.name}>
+                  {m.link ? (
+                    <a href={m.link} target="_blank" rel="noopener noreferrer">
+                      {card}
+                    </a>
+                  ) : (
+                    card
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </Block>
+      )}
+
+      <Block index={next()} label="Where we are" id="where">
         <p className={styles.where}>
           Based in Bangladesh.
           <br />
-          <span className="serif">Building for the world.</span>
+          <span className="serif">Working with teams anywhere.</span>
         </p>
         <dl className={styles.coords}>
           <div>
@@ -154,10 +193,14 @@ export default function AboutPage() {
             </dd>
           </div>
           <div>
-            <dt className="label muted">Audience</dt>
-            <dd>Everywhere</dd>
+            <dt className="label muted">Language</dt>
+            <dd>English</dd>
           </div>
         </dl>
+        <p className="muted">
+          Our working day overlaps with Asia, the Middle East and mornings in Europe. For teams in
+          the Americas, we schedule calls at the start or end of our day.
+        </p>
       </Block>
 
       <div className={styles.spacer} />

@@ -23,5 +23,10 @@ export function LocalTime() {
     () => "--:--",
   );
 
-  return <time suppressHydrationWarning>{time}</time>;
+  // Hidden until the real time is known, then fades in — no "--:--" flash.
+  return (
+    <time suppressHydrationWarning data-pending={time === "--:--" || undefined}>
+      {time}
+    </time>
+  );
 }

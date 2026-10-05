@@ -61,7 +61,7 @@ export function Navbar() {
       }
     };
 
-    const mq = window.matchMedia("(min-width: 768px)");
+    const mq = window.matchMedia("(min-width: 900px)");
     const onMq = () => mq.matches && setOpen(false);
 
     document.addEventListener("keydown", onKey);
@@ -87,7 +87,10 @@ export function Navbar() {
 
         <nav className={styles.desktopNav} aria-label="Primary">
           <ul>
-            {site.nav.map((item) => (
+            {/* Contact is covered by the CTA button on desktop. */}
+            {site.nav
+              .filter((item) => item.href !== site.cta.href)
+              .map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
@@ -101,8 +104,12 @@ export function Navbar() {
           </ul>
         </nav>
 
-        <Link href="/contact" className={styles.cta}>
-          Let&rsquo;s talk <span aria-hidden="true">→</span>
+        <Link
+          href={site.cta.href}
+          className={styles.cta}
+          aria-current={isActive(site.cta.href) ? "page" : undefined}
+        >
+          {site.cta.label} <span aria-hidden="true">→</span>
         </Link>
 
         <button

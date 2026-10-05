@@ -25,7 +25,7 @@
 
 @media (min-width: 900px) {
   .block {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: 2rem;
   }
   .blockLabel {
@@ -158,4 +158,70 @@
 
 .spacer {
   height: clamp(5rem, 10vw, 9rem);
+}
+
+.making h3 a {
+  transition: color 0.25s ease;
+}
+
+@media (hover: hover) {
+  .making h3 a:hover {
+    color: var(--accent);
+  }
+}
+
+.inlineLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
+/* ---- Team (shown only when data/team.ts has people) ------------------- */
+
+.team {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 1rem;
+}
+
+@media (min-width: 900px) {
+  .team {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem 1.5rem;
+  }
+}
+
+.team a {
+  display: block;
+}
+
+.photo {
+  aspect-ratio: 1;
+  margin-bottom: 0.9rem;
+  overflow: hidden;
+  background: var(--paper-2);
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+  transition:
+    filter 0.5s ease,
+    transform 1s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .team a:hover .photo img {
+    filter: none;
+    transform: scale(1.03);
+  }
+}
+
+.memberName {
+  font-weight: 500;
+  letter-spacing: -0.015em;
 }

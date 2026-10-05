@@ -230,6 +230,15 @@ p {
   border: 0;
 }
 
+/* LocalTime: invisible until hydrated */
+time[data-pending] {
+  opacity: 0;
+}
+
+time {
+  transition: opacity 0.4s ease;
+}
+
 .skip-link {
   position: fixed;
   top: 0.75rem;

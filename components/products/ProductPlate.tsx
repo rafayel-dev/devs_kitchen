@@ -1,39 +1,56 @@
 import Image from "next/image";
-import type { Product } from "@/data/products";
+import type { Product, ProductImage } from "@/data/products";
 import styles from "./ProductPlate.module.css";
 
 type Props = {
-  product: Product;
   index: string;
+  /** Right-hand caption, e.g. the product category. */
+  label: string;
+  image?: ProductImage;
+  /** Drawn sketch shown when there is no image. */
+  category?: Product["category"];
   priority?: boolean;
   sizes?: string;
 };
 
 /**
- * The visual for a product. Uses the product's cover image when provided;
- * otherwise draws a quiet interface sketch that matches its category.
+ * The framed visual for a product or case study. Uses the cover image when provided;
+ * otherwise draws a quiet interface sketch that matches the category.
+ * Contained images sit on their own background so wide or square art is never cropped.
  */
-export function ProductPlate({ product, index, priority, sizes = "(min-width: 900px) 33vw, 100vw" }: Props) {
+export function ProductPlate({
+  index,
+  label,
+  image,
+  category = "Experiment",
+  priority,
+  sizes = "(min-width: 900px) 33vw, 100vw",
+}: Props) {
+  const contain = image?.fit === "contain";
+
   return (
-    <figure className={styles.plate}>
-      {product.image ? (
+    <figure
+      className={`${styles.plate} ${contain ? styles.contain : ""}`}
+      style={image?.background ? { background: image.background } : undefined}
+    >
+      {image ? (
         <Image
-          src={product.image.src}
-          alt={product.image.alt}
-          width={product.image.width}
-          height={product.image.height}
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
           sizes={sizes}
           priority={priority}
           className={styles.image}
         />
       ) : (
         <div className={styles.sketch} aria-hidden="true">
-          <Sketch category={product.category} />
+          <Sketch category={category} />
         </div>
       )}
       <figcaption className={`label ${styles.caption}`}>
         <span>Fig. {index}</span>
-        <span>{product.category}</span>
+        <span>{label}</span>
       </figcaption>
     </figure>
   );

@@ -2,7 +2,7 @@
  * Legal copy for /privacy and /terms.
  *
  * Written to describe what this website actually does today: no cookies, no analytics,
- * no forms, no accounts. If that changes (e.g. you add analytics or a contact form),
+ * no accounts, and one project inquiry form. If that changes (e.g. you add analytics),
  * update the relevant section. Have the final text reviewed by a qualified professional.
  *
  * Apps can link their own policy via `privacyUrl` in data/products.ts.
@@ -25,14 +25,14 @@ export type LegalDocument = {
 
 export const privacyPolicy: LegalDocument = {
   title: "Privacy Policy",
-  lastUpdated: "2026-10-03",
+  lastUpdated: "2026-10-05",
   intro: `This policy explains what information ${site.name} handles when you visit this website or contact us, and how our applications are covered.`,
   sections: [
     {
       id: "summary",
       heading: "The short version",
       body: [
-        "This website does not use cookies, analytics, advertising trackers or user accounts. It has no forms that collect personal information. If you email us, we use your message to reply to you — nothing else.",
+        "This website does not use cookies, analytics, advertising trackers or user accounts. If you send us a project brief or an email, we use what you send to reply to you — nothing else.",
       ],
     },
     {
@@ -47,7 +47,9 @@ export const privacyPolicy: LegalDocument = {
       id: "contact",
       heading: "When you contact us",
       body: [
-        "If you email us, we receive your email address, your name if you include it, and whatever you choose to write. We use this only to respond and to continue the conversation you started.",
+        "Our project inquiry form asks for your name, email address and details about your project, such as the service you need, an estimated budget and a timeline. Fields marked optional can be left empty.",
+        "Depending on how the form is set up, your submission is either delivered to our inbox by a form-delivery service (Web3Forms), which processes it only to forward it to us, or opened in your own email app for you to send. If you email us directly, we receive your email address and whatever you choose to write.",
+        "We use this information only to respond, to prepare a proposal if you ask for one, and to continue the conversation you started.",
         "We do not sell, rent or share your correspondence with third parties for marketing. We keep messages for as long as they are relevant to the conversation, and you can ask us to delete them at any time.",
       ],
     },
@@ -55,8 +57,7 @@ export const privacyPolicy: LegalDocument = {
       id: "apps",
       heading: "Our applications",
       body: [
-        "Each product we publish — including apps on Google Play and other stores — is covered by its own privacy information, linked from that product's page on this website and from its store listing. App-specific policies describe exactly what that app collects, if anything, and why.",
-        "Where an app does not link its own policy, this policy applies, and that app does not collect personal information beyond what is described here.",
+        "This policy covers this website only. Each app we publish — on Google Play, the App Store or the web — has its own privacy policy describing exactly what that app collects and why. It is linked from the app's store listing and from its product page on this website, and is published before the app is released.",
       ],
     },
     {
@@ -90,7 +91,7 @@ export const privacyPolicy: LegalDocument = {
 
 export const termsOfService: LegalDocument = {
   title: "Terms of Service",
-  lastUpdated: "2026-10-03",
+  lastUpdated: "2026-10-05",
   intro: `These terms apply to your use of the ${site.name} website. Individual products may have their own terms, which apply to those products.`,
   sections: [
     {
@@ -106,6 +107,13 @@ export const termsOfService: LegalDocument = {
       body: [
         `The text, design, graphics, logos and code that make up this website belong to ${site.name} unless stated otherwise. You may view and share pages for personal, non-commercial purposes. You may not copy, modify or republish substantial parts of the website without our written permission.`,
         "Third-party names and trademarks, including the names of app stores and technologies, belong to their respective owners.",
+      ],
+    },
+    {
+      id: "client-work",
+      heading: "Client projects",
+      body: [
+        "Information about our services on this website is a general description, not an offer. Every client project is governed by its own written proposal or agreement, which sets out the scope, timeline, cost and ownership of the work. Where that agreement and these terms differ, the agreement applies.",
       ],
     },
     {

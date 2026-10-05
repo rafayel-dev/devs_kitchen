@@ -18,7 +18,7 @@ export function Global() {
       <div className="container">
         <div className={styles.head}>
           <p className="label">
-            <span className={styles.index}>07</span> <span className="muted">&nbsp;Where we are</span>
+            <span className={styles.index}>08</span> <span className="muted">&nbsp;Where we are</span>
           </p>
           <h2 id="global-title" className={styles.title} data-reveal>
             Built in Bangladesh.
@@ -52,8 +52,8 @@ export function Global() {
         </figure>
 
         <p className={`lead muted ${styles.copy}`} data-reveal>
-          Our day starts at GMT+{home}. The software we make is meant for anyone, in any of these
-          time zones — on whatever device they happen to carry.
+          We work from GMT+{home}. Our day overlaps with Asia, the Middle East and mornings in Europe;
+          for teams in the Americas, we schedule calls at the start or end of our day.
         </p>
       </div>
     </section>

@@ -13,7 +13,7 @@ export function CTA() {
           <div className={styles.side} data-reveal style={{ "--reveal-delay": 1 } as React.CSSProperties}>
             <p className={`serif ${styles.line}`}>Let’s see what we can cook.</p>
             <div className={styles.actions}>
-              <Button href="/contact">Start a conversation</Button>
+              <Button href={site.cta.href}>{site.cta.label}</Button>
               <a href={`mailto:${site.email}`} className={`link ${styles.email}`}>
                 {site.email}
               </a>

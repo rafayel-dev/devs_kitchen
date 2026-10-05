@@ -8,7 +8,7 @@ import styles from "./products.module.css";
 
 export const metadata: Metadata = {
   title: "Products",
-  description: "Software DEVS KITCHEN is building, shipping and exploring — mobile applications, web products and digital tools.",
+  description: "Products designed and built in-house by DEVS KITCHEN — mobile applications, web products and digital tools.",
   alternates: { canonical: "/products" },
   openGraph: { url: "/products" },
 };
@@ -17,10 +17,14 @@ export default function ProductsPage() {
   return (
     <PageTransition>
       <PageHeader
-        label="Products"
+        label="Built in-house"
         aside={`${String(products.length).padStart(2, "0")} entries`}
-        title="Products"
-        intro="Software we’re building, shipping and exploring."
+        title={
+          <>
+            Our <span className="serif">products.</span>
+          </>
+        }
+        intro="Software we’re building, shipping and exploring for ourselves — designed and engineered by the same team that builds for our clients."
       />
 
       <section className="container" aria-label="All products">

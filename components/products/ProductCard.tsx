@@ -19,7 +19,13 @@ export function ProductCard({ product, layout = "card", headingLevel: H = "h3" }
     return (
       <article className={styles.row}>
         <Link href={href} className={styles.rowPlate} tabIndex={-1} aria-hidden="true">
-          <ProductPlate product={product} index={index} sizes="(min-width: 900px) 50vw, 100vw" />
+          <ProductPlate
+            index={index}
+            label={product.category}
+            image={product.image}
+            category={product.category}
+            sizes="(min-width: 900px) 50vw, 100vw"
+          />
         </Link>
 
         <div className={styles.rowBody}>
@@ -59,7 +65,7 @@ export function ProductCard({ product, layout = "card", headingLevel: H = "h3" }
   return (
     <article className={styles.card}>
       <Link href={href} className={styles.cardLink}>
-        <ProductPlate product={product} index={index} />
+        <ProductPlate index={index} label={product.category} image={product.image} category={product.category} />
         <div className={`label ${styles.meta}`}>
           <span className={styles.index}>{index}</span>
           <StatusBadge status={product.status} />

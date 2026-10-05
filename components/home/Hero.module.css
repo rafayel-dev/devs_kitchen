@@ -167,26 +167,8 @@
   font-size: var(--fs-small);
 }
 
-.ticketStatus {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--muted);
-}
-
-.ticketStatus::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  border: 1px solid currentColor;
-}
-
-.ticketStatus[data-status="live"]::before,
-.ticketStatus[data-status="beta"]::before,
-.ticketStatus[data-status="in-development"]::before {
-  background: var(--accent);
-  border-color: var(--accent);
+.ticketTag {
+  white-space: nowrap;
 }
 
 @media (hover: hover) {
@@ -197,7 +179,7 @@
 
 @media (min-width: 900px) {
   .lower {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: 2rem;
   }
   .copy {

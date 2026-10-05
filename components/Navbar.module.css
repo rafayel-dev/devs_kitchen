@@ -91,6 +91,12 @@
   transition: transform 0.35s var(--ease-out);
 }
 
+.cta[aria-current="page"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
 @media (hover: hover) {
   .cta:hover {
     background: var(--ink);
@@ -102,7 +108,8 @@
   }
 }
 
-@media (min-width: 768px) {
+/* Four links + CTA need room — switch to the full bar from 900px. */
+@media (min-width: 900px) {
   .desktopNav {
     display: block;
     margin-right: clamp(0.5rem, 2vw, 1.5rem);

@@ -1,28 +1,23 @@
 import type { Metadata } from "next";
+import { Button } from "@/components/Button";
+import { InquiryForm } from "@/components/contact/InquiryForm";
 import { PageHeader } from "@/components/PageHeader";
 import { PageTransition } from "@/components/PageTransition";
 import { mailto, site } from "@/data/site";
 import styles from "./contact.module.css";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Get in touch with DEVS KITCHEN about a product, support, a partnership or an idea.",
+  title: "Start a project",
+  description:
+    "Tell DEVS KITCHEN about your project — mobile apps, web products, design or an MVP. Product support requests welcome too.",
   alternates: { canonical: "/contact" },
   openGraph: { url: "/contact" },
 };
 
-const topics = [
-  { label: "A new idea or project", subject: "New project" },
-  { label: "Help with one of our products", subject: "Product support" },
-  { label: "Partnerships", subject: "Partnership" },
-  { label: "Something else", subject: "Hello" },
-];
-
-const include = [
-  "Who you are, and the best way to reach you.",
-  "What you are working on, or the problem you want solved.",
-  "Any timing or constraints that matter.",
-  "Links, sketches or files that help explain it.",
+const nextSteps = [
+  { title: "We read your brief", body: "And reply personally with questions or next steps." },
+  { title: "Discovery call", body: "A short call to understand your goals, users and constraints." },
+  { title: "Written proposal", body: "Scope, timeline and cost — agreed before any work starts." },
 ];
 
 const support = [
@@ -37,59 +32,74 @@ export default function ContactPage() {
     <PageTransition>
       <PageHeader
         label="Contact"
-        aside="Email is the fastest way"
+        aside="New projects & support"
         title="Let’s talk."
-        intro="DEVS KITCHEN designs and builds software products — mobile apps, web products and digital tools. Whether you have a question, a problem or an idea, write to us."
+        intro="Tell us about your project — a few details are enough to start. We read every message and reply personally."
       />
 
-      <section className={`container ${styles.mailBlock}`} aria-labelledby="write">
-        <h2 id="write" className="label muted">
-          Write to us
-        </h2>
-        <a href={mailto()} className={styles.email}>
-          {site.email}
-          <span aria-hidden="true">→</span>
-        </a>
+      <div className={`container ${styles.layout}`}>
+        <section className={styles.formCol} aria-labelledby="brief-title">
+          <h2 id="brief-title" className={`label ${styles.colLabel}`}>
+            <span className={styles.index}>01</span> Project brief
+          </h2>
+          <InquiryForm />
+        </section>
 
-        <div className={styles.topics}>
-          <p className="label muted">Or start with a subject</p>
-          <ul>
-            {topics.map((t) => (
-              <li key={t.subject}>
-                <a href={mailto(t.subject)} className={styles.topic}>
-                  {t.label}
-                  <span aria-hidden="true">↗</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+        <aside className={styles.aside}>
+          <div className={styles.asideBlock}>
+            <h2 className={`label ${styles.colLabel}`}>
+              <span className={styles.index}>02</span> Prefer email?
+            </h2>
+            <a href={mailto("New project")} className={styles.email}>
+              {site.email}
+            </a>
+            {site.bookingUrl && (
+              <Button href={site.bookingUrl} variant="outline">
+                Book a call
+              </Button>
+            )}
+          </div>
 
-      <section className={`container ${styles.guides}`} aria-label="What to include">
-        <div className={styles.guide} data-reveal>
-          <h2 className="h3">What to include</h2>
-          <ol>
-            {include.map((line, i) => (
-              <li key={line}>
-                <span className="label muted">{String(i + 1).padStart(2, "0")}</span>
-                {line}
-              </li>
-            ))}
-          </ol>
+          <div className={styles.asideBlock}>
+            <h2 className={`label ${styles.colLabel}`}>
+              <span className={styles.index}>03</span> What happens next
+            </h2>
+            <ol className={styles.steps}>
+              {nextSteps.map((s, i) => (
+                <li key={s.title}>
+                  <span className="label muted">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <p className={styles.stepTitle}>{s.title}</p>
+                    <p className="muted">{s.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </aside>
+      </div>
+
+      <section className={`container ${styles.support}`} aria-labelledby="support-title">
+        <div className={styles.supportHead}>
+          <h2 id="support-title" className="h3">
+            Using one of our apps?
+          </h2>
+          <p className="muted">
+            Email{" "}
+            <a href={mailto("Product support")} className="link">
+              {site.email}
+            </a>{" "}
+            and, for the quickest help, mention:
+          </p>
         </div>
-        <div className={styles.guide} data-reveal style={{ "--reveal-delay": 1 } as React.CSSProperties}>
-          <h2 className="h3">Using one of our apps?</h2>
-          <p className="muted">For the quickest help, please mention:</p>
-          <ol>
-            {support.map((line, i) => (
-              <li key={line}>
-                <span className="label muted">{String(i + 1).padStart(2, "0")}</span>
-                {line}
-              </li>
-            ))}
-          </ol>
-        </div>
+        <ol className={styles.supportList}>
+          {support.map((line, i) => (
+            <li key={line}>
+              <span className="label muted">{String(i + 1).padStart(2, "0")}</span>
+              {line}
+            </li>
+          ))}
+        </ol>
       </section>
     </PageTransition>
   );

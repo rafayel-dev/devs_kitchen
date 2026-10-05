@@ -9,11 +9,11 @@ export function ProductsSection() {
     <section className="section" aria-labelledby="cooking-title">
       <div className="container">
         <SectionHeading
-          index="02"
-          label="Products"
+          index="03"
+          label="Our products"
           id="cooking-title"
           title="What’s cooking?"
-          intro="A look at the products and experiments coming out of DEVS KITCHEN."
+          intro="We don’t only build for clients — we design, build and ship products of our own. It is the clearest proof of how we work."
         />
         <div className={styles.grid}>
           <ProductGrid products={products.slice(0, 3)} />

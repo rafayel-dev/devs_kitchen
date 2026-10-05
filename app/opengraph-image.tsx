@@ -31,7 +31,7 @@ export default function OpengraphImage() {
             borderBottom: "1px solid rgba(243,240,234,0.2)",
           }}
         >
-          <span style={label}>Independent software studio</span>
+          <span style={label}>Design &amp; development studio</span>
           <span style={label}>Bangladesh → Global</span>
         </div>
 

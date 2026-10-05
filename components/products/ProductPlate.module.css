@@ -17,6 +17,16 @@
   object-fit: cover;
 }
 
+/* Contained art: the whole image is visible, with the bottom edge kept clear for the caption. */
+.contain .image {
+  object-fit: contain;
+  padding: clamp(1rem, 4%, 2.5rem) clamp(1rem, 4%, 2.5rem) 2.75rem;
+}
+
+.contain .caption {
+  color: rgb(15 15 13 / 0.62);
+}
+
 .sketch {
   display: grid;
   place-items: center;

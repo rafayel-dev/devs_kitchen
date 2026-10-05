@@ -57,7 +57,7 @@
 
 @media (min-width: 900px) {
   .inner {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: 2rem;
   }
   .head {

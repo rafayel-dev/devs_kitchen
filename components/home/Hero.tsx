@@ -1,18 +1,16 @@
 import Link from "next/link";
-import { products, statusLabel } from "@/data/products";
+import { services } from "@/data/services";
 import { site } from "@/data/site";
 import { Button } from "../Button";
 import { LocalTime } from "../LocalTime";
 import styles from "./Hero.module.css";
 
 export function Hero() {
-  const stove = products.slice(0, 4);
-
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
       <div className={`container ${styles.inner}`}>
         <div className={`label ${styles.meta}`}>
-          <p>Independent software studio</p>
+          <p>Design &amp; development studio</p>
           <p className={styles.route}>
             {site.location.country} <span aria-hidden="true">→</span>
             <span className="visually-hidden">to</span> Global
@@ -40,31 +38,29 @@ export function Hero() {
         <div className={styles.lower}>
           <div className={styles.copy}>
             <p className="lead">
-              We design and build useful software, mobile applications and digital products — from
-              idea to launch.
+              We design and build mobile apps, web products and digital tools — for clients, and
+              for ourselves. From first idea to launch, and after.
             </p>
             <div className={styles.actions}>
-              <Button href="/products">Explore our products</Button>
-              <Button href="/about" variant="secondary">
-                About DEVS KITCHEN
+              <Button href={site.cta.href}>{site.cta.label}</Button>
+              <Button href="/work" variant="secondary">
+                See our work
               </Button>
             </div>
           </div>
 
-          <aside className={styles.ticket} aria-label="Currently in the kitchen">
+          <aside className={styles.ticket} aria-label="Services">
             <div className={`label ${styles.ticketHead}`}>
-              <span>On the stove</span>
-              <span className="muted">{String(stove.length).padStart(2, "0")} items</span>
+              <span>The menu</span>
+              <span className="muted">{String(services.length).padStart(2, "0")} services</span>
             </div>
             <ol>
-              {stove.map((p, i) => (
-                <li key={p.slug}>
-                  <Link href={`/products/${p.slug}`} className={styles.ticketRow}>
+              {services.map((s, i) => (
+                <li key={s.slug}>
+                  <Link href={`/services#${s.slug}`} className={styles.ticketRow}>
                     <span className="label muted">{String(i + 1).padStart(2, "0")}</span>
-                    <span className={styles.ticketName}>{p.name}</span>
-                    <span className={`label ${styles.ticketStatus}`} data-status={p.status}>
-                      {statusLabel[p.status]}
-                    </span>
+                    <span className={styles.ticketName}>{s.short}</span>
+                    <span className={`label muted ${styles.ticketTag}`}>{s.tag}</span>
                   </Link>
                 </li>
               ))}

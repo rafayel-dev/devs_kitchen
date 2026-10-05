@@ -48,7 +48,8 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
   const next = products[(position + 1) % products.length];
 
   const support = product.supportUrl ?? "/contact";
-  const privacy = product.privacyUrl ?? "/privacy";
+  // No app-specific policy yet → we say so plainly instead of pointing at the website policy.
+  const privacy = product.privacyUrl;
   const isExternal = (href: string) => /^https?:\/\//.test(href);
 
   const platforms = product.platforms.length
@@ -121,7 +122,14 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
         </header>
 
         <div className={`container ${styles.cover}`}>
-          <ProductPlate product={product} index={index} priority sizes="100vw" />
+          <ProductPlate
+            index={index}
+            label={product.category}
+            image={product.image}
+            category={product.category}
+            priority
+            sizes="100vw"
+          />
         </div>
 
         <section className={`container ${styles.block}`} aria-labelledby="overview">
@@ -200,21 +208,26 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
                 {isExternal(support) ? "↗" : "→"}
               </span>
             </Link>
-            <Link
-              href={privacy}
-              className={styles.helpCard}
-              {...(isExternal(privacy) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            >
-              <span className="h3">Privacy policy</span>
-              <span className="muted">
-                {product.privacyUrl
-                  ? `How ${product.name} handles your information.`
-                  : `${product.name} is covered by the ${site.name} privacy policy.`}
-              </span>
-              <span className={styles.helpArrow} aria-hidden="true">
-                {isExternal(privacy) ? "↗" : "→"}
-              </span>
-            </Link>
+            {privacy ? (
+              <Link
+                href={privacy}
+                className={styles.helpCard}
+                {...(isExternal(privacy) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >
+                <span className="h3">Privacy policy</span>
+                <span className="muted">How {product.name} handles your information.</span>
+                <span className={styles.helpArrow} aria-hidden="true">
+                  {isExternal(privacy) ? "↗" : "→"}
+                </span>
+              </Link>
+            ) : (
+              <div className={`${styles.helpCard} ${styles.helpCardStatic}`}>
+                <span className="h3">Privacy policy</span>
+                <span className="muted">
+                  {product.name}&rsquo;s privacy policy will be published here before launch.
+                </span>
+              </div>
+            )}
           </div>
         </section>
 

@@ -21,6 +21,10 @@ export type ProductImage = {
   alt: string;
   width: number;
   height: number;
+  /** "cover" fills the frame and may crop; "contain" shows the whole image. Default: cover. */
+  fit?: "cover" | "contain";
+  /** Frame background behind a contained image — match the image's own edges. Any CSS background. */
+  background?: string;
 };
 
 export type Product = {
@@ -74,7 +78,7 @@ export const products: Product[] = [
     name: "BooPaw",
     category: "Mobile application",
     status: "in-development",
-    summary: "Digital Pet ID, smart QR collar tags and lost & found pet network.",
+    summary: "Digital pet ID, smart QR collar tags and lost & found pet network.",
     description: [
       "BooPaw gives pet owners a digital identity for their pets with unique, secure QR collar tags. If a pet ever goes missing, anyone who finds it can scan the tag with their phone camera to instantly view emergency information and contact the owner safely.",
       "The companion mobile application provides owners with instant scan notifications, lost pet community alerts, digital health documents, photo diary, and walk tracking for dogs and cats.",
@@ -82,36 +86,37 @@ export const products: Product[] = [
     ],
     platforms: ["android", "ios"],
     image: {
-      src: "/products/boopaw/cover.png",
-      alt: "BooPaw mobile application icon and branding",
-      width: 1000,
-      height: 1000,
+      src: "/products/boopaw/cover.webp",
+      alt: "BooPaw app screens: a digital pet ID card and a lost pet alert",
+      width: 1024,
+      height: 500,
+      fit: "contain",
+      background: "linear-gradient(90deg, #fff4f6, #fcd0db)",
     },
     features: [
       {
-        title: "Smart QR Collar Tags",
+        title: "Smart QR collar tags",
         body: "Instant identification scannable by any standard phone camera without requiring an app installation.",
       },
       {
-        title: "Lost & Found Community Network",
+        title: "Lost & found community network",
         body: "Real-time scan alerts with approximate location and neighborhood pet broadcast system.",
       },
       {
-        title: "Digital Pet Passport",
+        title: "Digital pet passport",
         body: "Securely store vaccination records, dietary needs, medical history, and emergency vet contacts.",
       },
       {
-        title: "Health & Activity Diary",
+        title: "Health & activity diary",
         body: "Track daily walks, photo diary memories, and pet wellness milestones in one place.",
       },
     ],
     technology: ["React Native", "Expo", "TypeScript", "Node.js", "MongoDB"],
     websiteUrl: "https://boopaw.app",
     supportUrl: "mailto:hello@devskitchen.dev.cv?subject=BooPaw%20Support",
-    privacyUrl: "/privacy",
   },
   {
-    slug: "kitchen-tools",
+    slug: "studio-tools",
     name: "Studio Tools",
     category: "Digital tool",
     status: "in-development",

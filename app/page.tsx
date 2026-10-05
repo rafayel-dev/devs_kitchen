@@ -1,23 +1,25 @@
 import { CTA } from "@/components/CTA";
 import { PageTransition } from "@/components/PageTransition";
-import { AboutTeaser } from "@/components/home/AboutTeaser";
+import { Engagements } from "@/components/home/Engagements";
 import { Global } from "@/components/home/Global";
 import { Hero } from "@/components/home/Hero";
 import { Principles } from "@/components/home/Principles";
 import { Process } from "@/components/home/Process";
 import { ProductsSection } from "@/components/home/ProductsSection";
+import { ServicesSection } from "@/components/home/ServicesSection";
 import { Technology } from "@/components/home/Technology";
-import { WhatWeMake } from "@/components/home/WhatWeMake";
+import { WorkSection } from "@/components/home/WorkSection";
 
 export default function Home() {
   return (
     <PageTransition>
       <Hero />
-      <WhatWeMake />
+      <ServicesSection />
+      <WorkSection />
       <ProductsSection />
-      <Process />
-      <AboutTeaser />
-      <Principles />
+      <Process index="04" />
+      <Engagements index="05" />
+      <Principles index="06" />
       <Technology />
       <Global />
       <CTA />

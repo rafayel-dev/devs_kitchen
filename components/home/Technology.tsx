@@ -17,7 +17,7 @@ export function Technology() {
       <div className={`container ${styles.inner}`}>
         <div className={styles.head}>
           <p className="label">
-            <span className={styles.index}>06</span> <span className="muted">&nbsp;Stack</span>
+            <span className={styles.index}>07</span> <span className="muted">&nbsp;Stack</span>
           </p>
           <h2 id="tech-title" className={`h3 ${styles.title}`}>
             Built with modern technologies.
