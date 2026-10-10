@@ -126,7 +126,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
             index={index}
             label={product.category}
             image={product.image}
-            category={product.category}
+            category={product.sketch ?? product.category}
             priority
             sizes="100vw"
           />
@@ -169,7 +169,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
             </div>
             <ul className={styles.screenRow} tabIndex={0} aria-label="Screenshots, scrollable">
               {product.screenshots.map((s) => (
-                <li key={s.src}>
+                <li key={s.src} style={{ "--ar": s.width / s.height } as React.CSSProperties}>
                   <Image src={s.src} alt={s.alt} width={s.width} height={s.height} sizes="(min-width: 900px) 22vw, 70vw" />
                 </li>
               ))}

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { Product, ProductImage } from "@/data/products";
+import type { ProductImage, SketchKind } from "@/data/products";
 import styles from "./ProductPlate.module.css";
 
 type Props = {
@@ -7,8 +7,8 @@ type Props = {
   /** Right-hand caption, e.g. the product category. */
   label: string;
   image?: ProductImage;
-  /** Drawn sketch shown when there is no image. */
-  category?: Product["category"];
+  /** Drawn sketch shown when there is no image — a category, or a specific interface. */
+  category?: SketchKind;
   priority?: boolean;
   sizes?: string;
 };
@@ -56,7 +56,7 @@ export function ProductPlate({
   );
 }
 
-function Sketch({ category }: { category: Product["category"] }) {
+function Sketch({ category }: { category: SketchKind }) {
   const common = {
     viewBox: "0 0 400 300",
     fill: "none",
@@ -67,6 +67,35 @@ function Sketch({ category }: { category: Product["category"] }) {
   } as const;
 
   switch (category) {
+    case "inbox":
+      // Three-pane conversation inbox: channel list, thread with an AI reply, product panel.
+      return (
+        <svg {...common}>
+          <rect x="60" y="55" width="280" height="190" rx="6" />
+          <line x1="130" y1="55" x2="130" y2="245" />
+          <line x1="282" y1="55" x2="282" y2="245" />
+          {[75, 105, 135, 165].map((y, i) => (
+            <g key={y} opacity={i === 0 ? 1 : 0.6}>
+              <circle cx="74" cy={y + 4} r="4" className={i === 0 ? styles.accentFill : undefined} />
+              <line x1="84" y1={y} x2="120" y2={y} />
+              <line x1="84" y1={y + 8} x2="110" y2={y + 8} opacity="0.5" />
+            </g>
+          ))}
+          <rect x="140" y="72" width="72" height="16" rx="8" />
+          <rect x="198" y="96" width="74" height="16" rx="8" opacity="0.6" />
+          <rect x="140" y="120" width="96" height="28" rx="8" />
+          <circle cx="150" cy="134" r="3" className={styles.accentFill} />
+          <line x1="158" y1="130" x2="226" y2="130" opacity="0.5" />
+          <line x1="158" y1="138" x2="210" y2="138" opacity="0.5" />
+          <rect x="186" y="158" width="86" height="16" rx="8" opacity="0.6" />
+          <rect x="140" y="214" width="132" height="18" rx="9" />
+          <circle cx="262" cy="223" r="4" />
+          <rect x="292" y="72" width="38" height="30" rx="3" />
+          <line x1="292" y1="114" x2="328" y2="114" />
+          <line x1="292" y1="123" x2="316" y2="123" opacity="0.5" />
+          <rect x="292" y="136" width="38" height="12" rx="6" className={styles.accentStroke} />
+        </svg>
+      );
     case "Mobile application":
       return (
         <svg {...common}>

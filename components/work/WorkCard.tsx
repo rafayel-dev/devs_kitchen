@@ -19,6 +19,7 @@ export function WorkCard({ study, index, headingLevel: H = "h3" }: Props) {
           index={index}
           label={study.inHouse ? "Own product" : study.client}
           image={study.cover}
+          category={study.sketch}
           sizes="(min-width: 900px) 58vw, 100vw"
         />
       </Link>

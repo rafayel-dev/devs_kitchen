@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/Button";
@@ -100,7 +101,14 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
         </header>
 
         <div className={`container ${styles.cover}`}>
-          <ProductPlate index={index} label={label} image={study.cover} priority sizes="100vw" />
+          <ProductPlate
+            index={index}
+            label={label}
+            image={study.cover}
+            category={study.sketch}
+            priority
+            sizes="100vw"
+          />
         </div>
 
         <Block label="The challenge" id="challenge">
@@ -129,6 +137,36 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
               ))}
             </ol>
           </Block>
+        ) : null}
+
+        {study.gallery?.length ? (
+          <section className={`container ${styles.gallery}`} aria-labelledby="screens">
+            <h2 id="screens" className={`label ${styles.blockLabel}`}>
+              Inside the product
+            </h2>
+            <ul className={styles.galleryGrid}>
+              {study.gallery.map((g) => (
+                <li
+                  key={g.src}
+                  className={g.width > g.height * 1.4 ? styles.galleryWide : undefined}
+                  data-reveal
+                >
+                  <figure>
+                    <div className={styles.galleryFrame}>
+                      <Image
+                        src={g.src}
+                        alt={g.alt}
+                        width={g.width}
+                        height={g.height}
+                        sizes="(min-width: 900px) 50vw, 100vw"
+                      />
+                    </div>
+                    <figcaption className="label muted">{g.caption}</figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ul>
+          </section>
         ) : null}
 
         {study.stack?.length ? (

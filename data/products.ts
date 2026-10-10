@@ -16,6 +16,9 @@ export type Platform = "android" | "ios" | "web" | "windows" | "macos" | "linux"
 
 export type ProductFeature = { title: string; body: string };
 
+/** What the drawn plate shows when there is no image: a category, or a specific interface. */
+export type SketchKind = ProductCategory | "inbox";
+
 export type ProductImage = {
   src: string; // path under /public, e.g. "/products/my-app/cover.png"
   alt: string;
@@ -39,6 +42,8 @@ export type Product = {
   platforms: Platform[];
   /** Cover image. Without one, a drawn interface plate is shown instead. */
   image?: ProductImage;
+  /** Which drawn plate to show without an image. Defaults to the category's sketch. */
+  sketch?: SketchKind;
   screenshots?: ProductImage[];
   features?: ProductFeature[];
   technology?: string[];
@@ -114,6 +119,66 @@ export const products: Product[] = [
     technology: ["React Native", "Expo", "TypeScript", "Node.js", "MongoDB"],
     websiteUrl: "https://boopaw.app",
     supportUrl: "mailto:hello@devskitchen.dev.cv?subject=BooPaw%20Support",
+  },
+  {
+    slug: "ai-sales-desk",
+    name: "AI Sales Desk",
+    category: "Web product",
+    status: "in-development",
+    summary:
+      "One inbox for website chat, Messenger, Instagram and WhatsApp — with an AI assistant that answers from each shop’s own catalog.",
+    description: [
+      "AI Sales Desk is a customer-support and sales platform for online sellers. Conversations from website chat, Facebook Messenger, Instagram and WhatsApp arrive in one shared inbox, where a team can reply, assign, tag and follow up together.",
+      "An AI assistant answers customers using only the business’s own documents and product catalog. It can search products, check stock and prepare draft orders — and hands the conversation to a person when it does not know the answer.",
+      "The platform is in active development. Website chat works end to end; Messenger, Instagram and WhatsApp are built and waiting on Meta’s app review before they go live.",
+    ],
+    platforms: ["web"],
+    image: {
+      src: "/products/ai-sales-desk/inbox.webp",
+      alt: "The AI Sales Desk inbox: a Bangla customer conversation with agent replies and an internal note (demo workspace)",
+      width: 1920,
+      height: 900,
+      fit: "contain",
+    },
+    screenshots: [
+      {
+        src: "/products/ai-sales-desk/products.webp",
+        alt: "The product catalog with prices and stock levels (demo workspace)",
+        width: 1600,
+        height: 583,
+      },
+      {
+        src: "/products/ai-sales-desk/widget.webp",
+        alt: "The website chat widget on a phone, showing the customer’s side of the conversation (demo workspace)",
+        width: 780,
+        height: 947,
+      },
+      {
+        src: "/products/ai-sales-desk/order.webp",
+        alt: "An order created from the conversation, with totals, delivery details and history (demo workspace)",
+        width: 740,
+        height: 960,
+      },
+    ],
+    features: [
+      {
+        title: "One shared inbox",
+        body: "Website chat, Messenger, Instagram and WhatsApp in a single realtime inbox, with assignment, tags, notes and priorities.",
+      },
+      {
+        title: "Answers from your own catalog",
+        body: "The assistant replies from the shop’s uploaded documents and products, and hands over to a person when it is not sure.",
+      },
+      {
+        title: "Orders inside the chat",
+        body: "Search products, check stock and create orders with server-side pricing, without leaving the conversation.",
+      },
+      {
+        title: "Website chat widget",
+        body: "A lightweight chat widget that any shop can add to its website with a single snippet.",
+      },
+    ],
+    technology: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "pgvector", "Redis", "BullMQ", "Socket.IO"],
   },
   {
     slug: "studio-tools",

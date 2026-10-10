@@ -23,7 +23,7 @@ export function ProductCard({ product, layout = "card", headingLevel: H = "h3" }
             index={index}
             label={product.category}
             image={product.image}
-            category={product.category}
+            category={product.sketch ?? product.category}
             sizes="(min-width: 900px) 50vw, 100vw"
           />
         </Link>
@@ -65,7 +65,12 @@ export function ProductCard({ product, layout = "card", headingLevel: H = "h3" }
   return (
     <article className={styles.card}>
       <Link href={href} className={styles.cardLink}>
-        <ProductPlate index={index} label={product.category} image={product.image} category={product.category} />
+        <ProductPlate
+          index={index}
+          label={product.category}
+          image={product.image}
+          category={product.sketch ?? product.category}
+        />
         <div className={`label ${styles.meta}`}>
           <span className={styles.index}>{index}</span>
           <StatusBadge status={product.status} />
