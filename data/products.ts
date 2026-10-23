@@ -181,6 +181,66 @@ export const products: Product[] = [
     technology: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "pgvector", "Redis", "BullMQ", "Socket.IO"],
   },
   {
+    slug: "office-erp",
+    name: "Office ERP",
+    category: "Web product",
+    status: "in-development",
+    summary:
+      "An HR and office ERP for growing teams — attendance, leave, payroll, expenses and projects in one dashboard.",
+    description: [
+      "Office ERP brings the day-to-day running of an office into one place. Employees check in, apply for leave, claim expenses and raise support tickets; managers, HR and finance approve, run payroll and see reports.",
+      "Every screen adapts to the person signed in. Six roles — from employee to admin — decide what each person can see and approve, and leave requests move through a manager and then HR before they are final.",
+      "It is currently an interactive prototype: the full interface and workflows run in the browser on demo data, ready to be connected to a backend.",
+    ],
+    platforms: ["web"],
+    image: {
+      src: "/products/office-erp/dashboard.webp",
+      alt: "The Office ERP dashboard: an employee profile, geofenced check-in and a monthly attendance calendar (demo company)",
+      width: 1600,
+      height: 900,
+      fit: "contain",
+    },
+    screenshots: [
+      {
+        src: "/products/office-erp/leave.webp",
+        alt: "Leave requests with a two-step manager and HR approval chain (demo company)",
+        width: 1600,
+        height: 820,
+      },
+      {
+        src: "/products/office-erp/payroll.webp",
+        alt: "Monthly payroll with earnings, deductions, net pay and payslips (demo company)",
+        width: 1600,
+        height: 900,
+      },
+      {
+        src: "/products/office-erp/projects.webp",
+        alt: "A project kanban board with tasks in To do, In progress, Under review and Completed (demo company)",
+        width: 1600,
+        height: 900,
+      },
+    ],
+    features: [
+      {
+        title: "Geofenced attendance",
+        body: "Check in from inside the office radius or with a QR code, against shifts with grace periods.",
+      },
+      {
+        title: "Two-step leave approval",
+        body: "Requests go to the employee’s manager, then HR, with balances for each leave type.",
+      },
+      {
+        title: "Payroll and payslips",
+        body: "Run monthly payroll with allowances and deductions, issue payslips and handle salary advances.",
+      },
+      {
+        title: "Role-based access",
+        body: "Six roles, from employee to admin, decide what each person can see, edit and approve.",
+      },
+    ],
+    technology: ["Next.js", "React", "TypeScript", "Tailwind CSS", "shadcn/ui", "TanStack Table", "Recharts"],
+  },
+  {
     slug: "studio-tools",
     name: "Studio Tools",
     category: "Digital tool",

@@ -167,6 +167,88 @@ export const work: CaseStudy[] = [
     productSlug: "boopaw",
     websiteUrl: "https://boopaw.app",
   },
+  {
+    slug: "office-erp",
+    title: "Office ERP",
+    client: "In-house product",
+    inHouse: true,
+    summary:
+      "An HR and office ERP covering attendance, leave, payroll, expenses and projects — product design and frontend engineering by DEVS KITCHEN.",
+    services: ["Product strategy", "UI/UX design", "Web development"],
+    platforms: ["Web"],
+    status: "Interactive prototype",
+    cover: {
+      src: "/products/office-erp/dashboard.webp",
+      alt: "The Office ERP dashboard: an employee profile, geofenced check-in and a monthly attendance calendar (demo company)",
+      width: 1600,
+      height: 900,
+      fit: "contain",
+    },
+    gallery: [
+      {
+        src: "/products/office-erp/leave.webp",
+        alt: "Leave requests with a two-step manager and HR approval chain (demo company)",
+        width: 1600,
+        height: 820,
+        caption: "Leave — every request moves through the manager, then HR",
+      },
+      {
+        src: "/products/office-erp/payroll.webp",
+        alt: "Monthly payroll with earnings, deductions, net pay and payslips (demo company)",
+        width: 1600,
+        height: 900,
+        caption: "Payroll — earnings, deductions and payslips for the month",
+      },
+      {
+        src: "/products/office-erp/projects.webp",
+        alt: "A project kanban board with tasks in To do, In progress, Under review and Completed (demo company)",
+        width: 1600,
+        height: 900,
+        caption: "Projects — a kanban board for company tasks",
+      },
+    ],
+    challenge: [
+      "Small and growing companies often run HR on spreadsheets, chat messages and paper forms. Attendance lives in one place, leave in another and payroll in a third, so every month-end means reconciling them by hand.",
+      "They need one system that employees actually use every day — and that shows managers, HR and finance only what each of them is responsible for.",
+    ],
+    approach: [
+      "We designed from the daily routine outwards. The dashboard opens on what an employee does most: check in, see their month, request leave or an expense. Approvals and reports sit one step further in, for the people who need them.",
+      "Permissions are built into the rules, not just hidden in the interface. Six roles decide who can view, edit and approve each record, and leave follows a written approval chain: the employee’s manager first, then HR.",
+      "We built it as an interactive prototype first. Every module works in the browser on realistic demo data, so the workflows can be tested and refined before a backend is connected.",
+    ],
+    highlights: [
+      {
+        title: "Geofenced check-in",
+        body: "Punch in from inside the office radius or with a QR code, measured against each employee’s shift and grace period.",
+      },
+      {
+        title: "Approval chains",
+        body: "Leave moves from manager to HR, with balances per leave type and a clear record of every decision.",
+      },
+      {
+        title: "Payroll in one run",
+        body: "Allowances, deductions and net pay are calculated for the whole company, with payslips and salary advances.",
+      },
+      {
+        title: "Thirteen modules",
+        body: "A dashboard, employees, attendance, shifts, leave, payroll, expenses, helpdesk, assets, documents, projects, performance and reports.",
+      },
+      {
+        title: "Role-based access",
+        body: "Employee, manager, HR, finance, IT admin and admin each see and approve only what is theirs.",
+      },
+      {
+        title: "Fast to navigate",
+        body: "A command palette, notifications and a mobile layout for people who are not at a desk.",
+      },
+    ],
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "shadcn/ui", "Radix UI", "TanStack Table", "Recharts"],
+    outcome: [
+      "The full interface and every workflow are built and run as an interactive prototype on demo data.",
+      "Next, the prototype will be connected to a backend with a database, authentication and audit history.",
+    ],
+    productSlug: "office-erp",
+  },
 ];
 
 export const getCaseStudy = (slug: string) => work.find((w) => w.slug === slug);
